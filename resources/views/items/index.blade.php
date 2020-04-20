@@ -6,15 +6,16 @@
 <div class="col-md-8 ">
 <div class="card">
 <div class="card-header">Found items:
-  <select style="  float:right;  margin:5px;" id="category">
+  <select style=" float:right;  margin:5px;" id="category">
 <option value="Jewellery">Jewellery</option>
 <option value="Pets">Pets</option>
 <option value="Electronic devices">Electronic Devices</option>
+<option value=''>All</option>
 </select>
-  <button style="  float:right; border-radius: 3px; border-width: thin;margin:5px;" id="refreshBtn" type="button" onclick="items" name="refresh">Refresh</button>
+  <button onclick="myFunction()" style="  float:right; border-radius: 3px; border-width: thin;margin:5px;" id="refreshBtn" type="button" onclick="items" name="refresh">Refresh</button>
 </div>
 <div class="card-body">
-<table class="table table-striped">
+<table id ="myTable"class="table table-striped">
 <thead>
 <tr>
 <th>Item Name</th>
@@ -51,4 +52,25 @@ method="post"> @csrf
 </div>
 </div>
 </div>
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("category");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
 @endsection
