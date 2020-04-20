@@ -1,10 +1,18 @@
 @extends('layouts.app')
 @section('content')
+
 <div class="container">
 <div class="row justify-content-center">
 <div class="col-md-8 ">
 <div class="card">
-<div class="card-header">Display all items</div>
+<div class="card-header">Found items:
+  <select style="  float:right;  margin:5px;" id="category">
+<option value="Jewellery">Jewellery</option>
+<option value="Pets">Pets</option>
+<option value="Electronic devices">Electronic Devices</option>
+</select>
+  <button style="  float:right; border-radius: 3px; border-width: thin;margin:5px;" id="refreshBtn" type="button" onclick="items" name="refresh">Refresh</button>
+</div>
 <div class="card-body">
 <table class="table table-striped">
 <thead>

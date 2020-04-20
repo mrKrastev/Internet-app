@@ -16,7 +16,7 @@
                     <img src="media/lost items img.jpg" alt="lost items?" width=400 height=400>
                 </div>
               <a class="navbar-brand" href="{{ url('items') }}">
-                <h2>Check what we've found!</h2>
+                <h2 style="color:green;"><strong><u>Check what we've found!</u></strong></h2>
               </a>
             </div>
         </div>
