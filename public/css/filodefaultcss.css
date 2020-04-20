@@ -1,0 +1,85 @@
+body{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+#logo{
+  width:10%;
+  height:10%;
+  margin:5px;
+  border-radius: 5px;
+  border-color: black;
+  border-style: ridge;
+}
+h1{
+  font-size: 20px;
+  text-align: left;
+  width:100%;
+}
+#bigMainField{
+width:60%;
+height:80%;
+margin:10px;
+
+border-radius: 3px;
+border-style: solid;
+border-color: black;
+}
+#LoginBtn{
+  float:right;
+  margin:5px;
+  background-color: transparent;
+  border-color: transparent;
+  color:#DAA520;
+}
+
+#btnsdiv{
+  width:100%;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+#btnsdiv button,select{
+  color:white;
+  float:right;
+  margin:10px;
+  border-radius: 3px;
+
+}
+#refreshBtn{
+  border-width: thin;
+
+}
+#addItemBtn{
+  color:white;
+  float:right;
+  margin:10px;
+  border-radius: 3px;
+
+}
+
+option{
+  color:black;
+}
+
+/*------------------ table css --------------------*/
+
+#tableDIV{
+  width:100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+td{
+padding:10px;
+border-color: black;
+border-style: ridge;
+border-radius:3px;
+
+
+}
+table{
+  border-color: transparent;
+  border-style: ridge;
+}
