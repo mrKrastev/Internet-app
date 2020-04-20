@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('items','ItemController');
 
 Route::get('/', function(){
-  return view('auth/login');
+  return view('home');
 });
 
 Auth::routes();

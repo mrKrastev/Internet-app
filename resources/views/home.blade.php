@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Lost items:</div>
+                <div class="card-header"><h1>Welcome to Found and Lost items website!</h1></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,29 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <table>
-                       <thead>
-                       <tr>
-                       <th> Item ID</th>
-                       <th> Item Name</th>
-                       <th> Item Category </th>
-                       <th> Item Colour </th>
-                       </tr>
-                       </thead>
-                       <tbody>
-                       @foreach($items ?? '' as $item)
-                       <tr>
-                       <td> {{$item->id}} </td>
-                       <td> {{$item->ItemName }} </td>
-                       <td> {{$item->Category }} </td>
-                       <td> {{$item->Colour}} </td>
-                       <td align='center'><button style="width:100%;height:100%; background:transparent; background-color:transparent;border-style:hidden;">See More for lost {{$item->ItemName }} </button></td>
-                       <td align='center'><button style="width:100%;height:100%; background:transparent; background-color:transparent;border-style:hidden;"><u>Fill a request form for  lost </u> {{$item->ItemName }}</button></td>
-                       </tr>
-                       @endforeach
-                       </tbody>
-                     </table>
+                    <img src="media/lost items img.jpg" alt="lost items?" width=400 height=400>
                 </div>
+              <a class="navbar-brand" href="{{ url('items') }}">
+                <h2>Check what we've found!</h2>
+              </a>
             </div>
         </div>
     </div>
