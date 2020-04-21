@@ -22,7 +22,7 @@
 <th>Category</th>
 <th>Colour</th>
 <th>Description</th>
-<th colspan="3">Action</th>
+<th colspan="3">Actions</th>
 </tr>
 </thead>
 <tbody>
@@ -32,21 +32,39 @@
 <td>{{$item['Category']}}</td>
 <td>{{$item['Colour']}}</td>
 <td>{{$item['Description']}}</td>
+@guest
+<td><a onclick="window.alert('Please log in to use this feature.');" class="btn
+btn- primary">Details</a></td>
+<td><a onclick="window.alert('Please log in to use this feature.');" class="btn
+btn- primary">Request item</a></td>
+@else
 <td><a href="{{action('ItemController@show', $item['id'])}}" class="btn
 btn- primary">Details</a></td>
-<td><a href="{{action('ItemController@edit', $item['id'])}}" class="btn
-btn- warning">Edit</a></td>
-<td>
-<form action="{{action('ItemController@destroy', $item['id'])}}"
-method="post"> @csrf
-<input name="_method" type="hidden" value="DELETE">
-<button class="btn btn-danger" type="submit"> Delete</button>
+<td><a href="{{action('ItemController@show', $item['id'])}}" class="btn
+btn- primary">Request item</a></td>
+@if(Auth::user()->role =='1')
+           <td><a href="{{action('ItemController@edit', $item['id'])}}" class="btn
+           btn- warning">Edit</a></td>
+           <td>
+           <form action="{{action('ItemController@destroy', $item['id'])}}"
+           method="post"> @csrf
+           <input name="_method" type="hidden" value="DELETE">
+           <button class="btn btn-danger" type="submit"> Delete</button>
 </form>
 </td>
 </tr>
+@endif
+@endguest
 @endforeach
 </tbody>
 </table>
+@guest
+@else
+@if(Auth::user()->role =='1')
+<a style="float:right;" href="{action('ItemController@show', 1}" class="btn
+btn- primary"><button>See requests</button></a>
+@endif
+@endguest
 </div>
 </div>
 </div>
