@@ -60,6 +60,8 @@ btn- primary">Request item</a></td>
 </table>
 @guest
 @else
+<a style="float:right;" href="create" class="btn
+btn- primary"><button>Add item</button></a>
 @if(Auth::user()->role =='1')
 <a style="float:right;" href="{action('ItemController@show', 1}" class="btn
 btn- primary"><button>See requests</button></a>

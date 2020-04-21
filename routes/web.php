@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::resource('items','ItemController');
+Route::get('/create', 'ItemController@create')->name('create');
 
 Route::get('/', function(){
   return view('home');

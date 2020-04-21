@@ -24,7 +24,7 @@ return view('items.index', compact('items'));
      */
     public function create()
     {
-        //
+        return view('items.create');
     }
 
     /**
@@ -35,7 +35,48 @@ return view('items.index', compact('items'));
      */
     public function store(Request $request)
     {
-        //
+
+// form validation
+$item = $this->validate(request(), [
+'ItemName' => 'required',
+'Category' => 'required',
+'Colour' => 'required',
+'Date' => 'required',
+'Location' => 'required',
+'Description' => 'required',
+'Pictures' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:500',
+]);
+//Handles the uploading of the image
+if ($request->hasFile('Pictures')){
+//Gets the filename with the extension
+$fileNameWithExt = $request->file('Pictures')->getClientOriginalName();
+//just gets the filename
+$filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+//Just gets the extension
+$extension = $request->file('Pictures')->getClientOriginalExtension();
+//Gets the filename to store
+$fileNameToStore = $filename.'_'.time().'.'.$extension;
+//Uploads the image
+$path =$request->file('Pictures')->storeAs('public/images', $fileNameToStore);
+}
+else {
+$fileNameToStore = 'noimage.jpg';
+}
+// create a Vehicle object and set its values from the input
+$item = new Item;
+$item->ItemName = $request->input('ItemName');
+$item->Category = $request->input('Category');
+$item->Colour = $request->input('Colour');
+$item->Date = $request->input('Date');
+$item->Location = $request->input('Location');
+$item->Description = $request->input('Description');
+$item->created_at = now();
+$item->updated_at = now();
+$item->Pictures = $fileNameToStore;
+// save the Vehicle object
+$item->save();
+// generate a redirect HTTP response with a success message
+return back()->with('success', 'Item has been added');
     }
 
     /**
