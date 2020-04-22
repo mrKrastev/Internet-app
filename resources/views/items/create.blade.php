@@ -62,8 +62,8 @@ placeholder="eg on bus route 3, Birmingham" />
 </div>
 <div class="col-md-8">
 <label>Pictures</label>
-<input type="file" name="Pictures"
-placeholder="Image file" />
+<input type="file" name="Picture[]"
+placeholder="Image file" multiple />
 </div>
 <div class="col-md-6 col-md-offset-4">
 <input type="submit" class="btn btn-primary" />

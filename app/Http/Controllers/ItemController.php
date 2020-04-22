@@ -44,20 +44,29 @@ $item = $this->validate(request(), [
 'Date' => 'required',
 'Location' => 'required',
 'Description' => 'required',
-'Pictures' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:500',
+'Pictures[]' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:500',
 ]);
 //Handles the uploading of the image
-if ($request->hasFile('Pictures')){
+$allImageNames='noimage.jpg';
+if ($request->hasFile('Picture')){
+  $allImageNames='';
+  foreach($request->file('Picture') as $image){
 //Gets the filename with the extension
-$fileNameWithExt = $request->file('Pictures')->getClientOriginalName();
+$fileNameWithExt = $image->getClientOriginalName();
 //just gets the filename
 $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
 //Just gets the extension
-$extension = $request->file('Pictures')->getClientOriginalExtension();
+$extension = $image->getClientOriginalExtension();
 //Gets the filename to store
 $fileNameToStore = $filename.'_'.time().'.'.$extension;
+if ($allImageNames=='') {
+  $allImageNames=$fileNameToStore;
+}else {
+$allImageNames=$allImageNames.','.$fileNameToStore;
+}
 //Uploads the image
-$path =$request->file('Pictures')->storeAs('public/images', $fileNameToStore);
+$path =$image->storeAs('public/images', $fileNameToStore);
+}
 }
 else {
 $fileNameToStore = 'noimage.jpg';
@@ -72,7 +81,7 @@ $item->Location = $request->input('Location');
 $item->Description = $request->input('Description');
 $item->created_at = now();
 $item->updated_at = now();
-$item->Pictures = $fileNameToStore;
+$item->Pictures = $allImageNames;
 // save the Vehicle object
 $item->save();
 // generate a redirect HTTP response with a success message
@@ -88,6 +97,10 @@ return back()->with('success', 'Item has been added');
     public function show($id)
     {
         //
+        $item = Item::find($id);
+        $str=$item->Pictures;
+        $manyurls=explode(",",$str);
+return view('items.show',compact('item'),['manyurls'=>$manyurls]);
     }
 
     /**
