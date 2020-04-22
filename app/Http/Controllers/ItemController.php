@@ -134,6 +134,8 @@ return view('items.show',compact('item'),['manyurls'=>$manyurls]);
      */
     public function destroy($id)
     {
-        //
+      $item = Item::find($id);
+      $item->delete();
+      return redirect('items')->with('success','Item has been deleted');
     }
 }
