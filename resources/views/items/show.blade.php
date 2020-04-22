@@ -34,12 +34,16 @@ src="{{ asset('storage/images/'.$url)}}"></td></tr>
 <table><tr>
 <td><a href="/items" class="btn btn-primary" role="button">Back to the
 list</a></td>
+<td><a href="{{action('ItemController@show', $item['id'])}}" class="btn
+btn- primary">Request item</a></td>
+@if(Auth::user()->role =='1')
 <td><a href="{{action('ItemController@edit', $item['id'])}}" class="btn
 btn- warning">Edit</a></td>
 <td><form action="{{action('ItemController@destroy', $item['id'])}}"
 method="post"> @csrf
 <input name="_method" type="hidden" value="DELETE">
 <button class="btn btn-danger" type="submit">Delete</button>
+@endif
 </form></td>
 </tr></table>
 </div>

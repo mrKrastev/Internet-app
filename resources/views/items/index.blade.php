@@ -15,7 +15,7 @@
   <button onclick="myFunction()" style="  float:right; border-radius: 3px; border-width: thin;margin:5px;" id="refreshBtn" type="button" onclick="items" name="refresh">Refresh</button>
 </div>
 <div class="card-body">
-<table id ="myTable"class="table table-striped" style="width:80%;">
+<table id ="myTable"class="table table-striped">
 <thead>
 <tr>
 <th>Item Name</th>
