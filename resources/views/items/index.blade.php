@@ -33,9 +33,9 @@
 <tbody>
 @foreach($items as $item)
 <tr>
-<td>{{$item['ItemName']}}</td>
+<td style ="word-break:break-word;">{{$item['ItemName']}}</td>
 <td>{{$item['Category']}}</td>
-<td>{{$item['Colour']}}</td>
+<td style ="word-break:break-word;">{{$item['Colour']}}</td>
 <td style ="word-break:break-word;">{{$item['Description']}}</td>
 @guest
 <td><a onclick="window.alert('Please log in to use this feature.');" class="btn
