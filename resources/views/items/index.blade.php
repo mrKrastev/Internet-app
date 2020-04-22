@@ -15,7 +15,7 @@
   <button onclick="myFunction()" style="  float:right; border-radius: 3px; border-width: thin;margin:5px;" id="refreshBtn" type="button" onclick="items" name="refresh">Refresh</button>
 </div>
 <div class="card-body">
-<table id ="myTable"class="table table-striped">
+<table id ="myTable"class="table table-striped" style="width:80%;">
 <thead>
 <tr>
 <th>Item Name</th>
@@ -31,7 +31,7 @@
 <td>{{$item['ItemName']}}</td>
 <td>{{$item['Category']}}</td>
 <td>{{$item['Colour']}}</td>
-<td>{{$item['Description']}}</td>
+<td style ="word-break:break-word;">{{$item['Description']}}</td>
 @guest
 <td><a onclick="window.alert('Please log in to use this feature.');" class="btn
 btn- primary">Details</a></td>
