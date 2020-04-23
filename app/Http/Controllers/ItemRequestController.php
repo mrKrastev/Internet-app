@@ -99,6 +99,8 @@ return view('itemrequests.index', compact('itemrequests'));
      */
     public function destroy($id)
     {
-        //
+      $req = ItemRequest::find($id);
+      $req->delete();
+      return back()->with('success','Request has been deleted');
     }
 }
