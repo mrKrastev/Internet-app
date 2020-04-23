@@ -20,6 +20,7 @@
 <tr> <th><b>Colour: </th> <td>{{$item->Colour}}</td></tr>
 <tr> <td><b>Date found:</th> <td>{{$item->Date}}</td></tr>
 <tr> <th><b>Description</th> <td style="max-width:150px;" >{{$item->Description}}</td></tr>
+<tr> <th><b>Found By:</th> <td style="max-width:150px;" >{{$item->FoundBy}}</td></tr>
   <?php
   $str=$item->Pictures;
   $manyurls=explode(",",$str);

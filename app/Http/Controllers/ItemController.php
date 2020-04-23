@@ -44,6 +44,7 @@ $item = $this->validate(request(), [
 'Date' => 'required',
 'Location' => 'required',
 'Description' => 'required',
+'FoundBy' => 'required',
 'Pictures[]' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:500',
 ]);
 //Handles the uploading of the image
@@ -52,6 +53,11 @@ if ($request->hasFile('Picture')){
   $allImageNames='';
   foreach($request->file('Picture') as $image){
 //Gets the filename with the extension
+if(exif_imagetype($image)){
+}else{
+  $errors='Please, make sure all files are images!';
+  return back()->withErrors(['Make sure all files are images!']);
+}
 $fileNameWithExt = $image->getClientOriginalName();
 //just gets the filename
 $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
@@ -79,6 +85,7 @@ $item->Colour = $request->input('Colour');
 $item->Date = $request->input('Date');
 $item->Location = $request->input('Location');
 $item->Description = $request->input('Description');
+$item->FoundBy = $request->input('FoundBy');
 $item->created_at = now();
 $item->updated_at = now();
 $item->Pictures = $allImageNames;
@@ -129,7 +136,6 @@ return view('items.edit',compact('item'));
       'ItemName' => 'required',
       'Category' => 'required',
       'Colour' => 'required',
-      'Date' => 'required',
       'Location' => 'required',
       'Description' => 'required',
       'Pictures[]' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:500',
@@ -140,6 +146,11 @@ return view('items.edit',compact('item'));
         $allImageNames='';
         foreach($request->file('Picture') as $image){
       //Gets the filename with the extension
+      if(exif_imagetype($image)){
+      }else{
+        $errors='Please, make sure all files are images!';
+        return back()->withErrors(['Make sure all files are images!']);
+      }
       $fileNameWithExt = $image->getClientOriginalName();
       //just gets the filename
       $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
@@ -162,11 +173,20 @@ return view('items.edit',compact('item'));
       $item->ItemName = $request->input('ItemName');
       $item->Category = $request->input('Category');
       $item->Colour = $request->input('Colour');
+      if ($request->input('Date')==null) {
+        // code...
+      }else {
       $item->Date = $request->input('Date');
+      }
       $item->Location = $request->input('Location');
       $item->Description = $request->input('Description');
       $item->updated_at = now();
-      $item->Pictures = $allImageNames;
+      if ($allImageNames=='noimage.jpg') {
+
+      }else {
+        $item->Pictures = $allImageNames;
+      }
+
       // save the Vehicle object
       $item->save();
       // generate a redirect HTTP response with a success message

@@ -21,6 +21,7 @@ class CreateItemsTable extends Migration
             $table->DateTime('Date');
             $table->string('Location');
             $table->string('Description');
+            $table->string('FoundBy');
             $table->string('Pictures');
 
             $table->timestamps();

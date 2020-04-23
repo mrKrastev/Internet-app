@@ -45,8 +45,11 @@ $item['id']) }} " enctype="multipart/form-data" >
 <input type="text" name="Location" value="{{$item->Location}}" />
 </div>
 <div class="col-md-8">
-<label >Date</label>
-<input type="datetime-local" id="birthdaytime" name="Date" value="{{$item->Date}}">
+  <div class="col-md-8">
+<label>Date found:</label><input type="text" value="{{$item->Date}}" disabled/>
+</div>
+<label >New Date(optional):</label>
+<input type="datetime-local" name="Date" value="{{$item->Date}}"/>
 </div>
 <div class="col-md-8">
 <label >Description</label>

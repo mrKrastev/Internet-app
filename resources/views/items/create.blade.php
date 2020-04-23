@@ -60,6 +60,10 @@ placeholder="eg on bus route 3, Birmingham" />
 <label >Description:</label>
 <textarea rows="4" cols="50" name="Description">anything uncommon</textarea>
 </div>
+<div>
+<label >Found By:</label>
+<input type="text" name="FoundBy" value="{{Auth::user()->name}}" readonly="true"/>
+</div>
 <div class="col-md-8">
 <label>Pictures</label>
 <input type="file" name="Picture[]"

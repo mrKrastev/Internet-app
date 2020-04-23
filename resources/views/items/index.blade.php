@@ -26,7 +26,7 @@
 <th>Item Name</th>
 <th>Category</th>
 <th>Colour</th>
-<th>Description</th>
+<th style ="word-break:break-word;">Date & Time Found</th>
 <th colspan="3">Actions</th>
 </tr>
 </thead>
@@ -36,7 +36,7 @@
 <td style ="word-break:break-word;">{{$item['ItemName']}}</td>
 <td>{{$item['Category']}}</td>
 <td style ="word-break:break-word;">{{$item['Colour']}}</td>
-<td style ="word-break:break-word;">{{$item['Description']}}</td>
+<td style ="word-break:break-word;">{{$item['Date']}}</td>
 @guest
 <td><a onclick="window.alert('Please log in to use this feature.');" class="btn
 btn- primary">Details</a></td>
