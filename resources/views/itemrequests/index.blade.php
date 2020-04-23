@@ -37,7 +37,7 @@
 
 @else
 @if(Auth::user()->role =='1')
-            <td><a href="{{action('ItemRequestController@index', $request['id'])}}" class="btn
+            <td><a href="{{action('ItemRequestController@edit', $request['id'])}}" class="btn
             btn- primary">Review</a></td>
            <td><form action="{{action('ItemRequestController@destroy', $request['id'])}}"
            method="post"> @csrf

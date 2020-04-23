@@ -46,14 +46,15 @@ btn- primary">Request item</a></td>
 <td><a href="{{action('ItemController@show', $item['id'])}}" class="btn
 btn- primary">Details</a></td>
 <td><a href="{{action('ItemRequestController@create', $item['id'])}}" class="btn
-btn- primary">Request item</a></td>
+btn- warning">Edit</a></td>
+<td>
 @if(Auth::user()->role =='1')
            <td><a href="{{action('ItemController@edit', $item['id'])}}" class="btn
            btn- warning">Edit</a></td>
            <td>
            <form action="{{action('ItemController@destroy', $item['id'])}}"
            method="post"> @csrf
-           <input name="_method" type="hidden" value="DELETE">
+           <input name="_method" type="hidden" value="DELETE"/>
            <button class="btn btn-danger" type="submit"> Delete</button>
 </form>
 </td>

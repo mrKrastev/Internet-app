@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ItemRequest;
 use App\Item;
+use App\User;
 class ItemRequestController extends Controller
 {
     /**
@@ -26,7 +27,7 @@ return view('itemrequests.index', compact('itemrequests'));
     public function create($id)
     {
         $item=Item::find($id);
-        return view('itemrequests.createrequest',['item'=>$item]);
+      return view('itemrequests.createrequest',['item'=>$item]);
     }
 
     /**
@@ -75,7 +76,8 @@ return view('itemrequests.index', compact('itemrequests'));
      */
     public function edit($id)
     {
-
+      $request = ItemRequest::find($id);
+    return view('itemrequests.reviewrequest',['request'=>$request]);
 
     }
 
@@ -88,7 +90,11 @@ return view('itemrequests.index', compact('itemrequests'));
      */
     public function update(Request $request, $id)
     {
-        //
+        $itemreq=ItemRequest::find($id);
+        $itemreq->Status = $request->input('status');
+        $itemreq->save();
+
+        return back()->with('success', 'Request status has been updated');
     }
 
     /**

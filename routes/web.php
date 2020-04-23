@@ -16,8 +16,7 @@ Route::resource('items','ItemController');
 Route::resource('itemrequests','ItemRequestController');
 
 Route::get('/create', 'ItemController@create')->name('create');
-Route::get('createrequest/{id}', ['as' => 'itemrequests.createrequest', 'uses' => 'ItemRequestController@create']);
-
+Route::get('itemrequests/createrequest/{id}', 'ItemRequestController@create')->name('itemrequests.create');
 Route::get('/', function(){
   return view('home');
 });
