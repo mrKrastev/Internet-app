@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::resource('items','ItemController');
+Route::resource('itemrequests','ItemRequestController');
+
 Route::get('/create', 'ItemController@create')->name('create');
+Route::get('createrequest/{id}', ['as' => 'itemrequests.createrequest', 'uses' => 'ItemRequestController@create']);
 
 Route::get('/', function(){
   return view('home');

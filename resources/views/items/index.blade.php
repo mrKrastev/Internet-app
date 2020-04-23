@@ -8,7 +8,7 @@
 
 <div class="container">
 <div class="row justify-content-center">
-<div class="col-md-8 ">
+<div class="col-md-12 ">
 <div class="card">
 <div class="card-header">Found items:
   <select style=" float:right;  margin:5px;" id="category">
@@ -45,7 +45,7 @@ btn- primary">Request item</a></td>
 @else
 <td><a href="{{action('ItemController@show', $item['id'])}}" class="btn
 btn- primary">Details</a></td>
-<td><a href="{{action('ItemController@show', $item['id'])}}" class="btn
+<td><a href="{{action('ItemRequestController@create', $item['id'])}}" class="btn
 btn- primary">Request item</a></td>
 @if(Auth::user()->role =='1')
            <td><a href="{{action('ItemController@edit', $item['id'])}}" class="btn
@@ -68,7 +68,7 @@ btn- primary">Request item</a></td>
 <a style="float:right;" href="create" class="btn
 btn- primary"><button>Add item</button></a>
 @if(Auth::user()->role =='1')
-<a style="float:right;" href="{action('ItemController@show', 1}" class="btn
+<a style="float:right;" href="{{ url('itemrequests') }}" class="btn
 btn- primary"><button>See requests</button></a>
 @endif
 @endguest
