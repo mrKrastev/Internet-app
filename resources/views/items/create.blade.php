@@ -58,7 +58,7 @@ placeholder="eg on bus route 3, Birmingham" />
 </div>
 <div class="col-md-8">
 <label >Description:</label>
-<textarea rows="4" cols="50" name="Description">anything uncommon</textarea>
+<textarea rows="4" cols="50" name="Description">...</textarea>
 </div>
 <div>
 <label >Found By:</label>

@@ -46,10 +46,11 @@
 </div>
 <div class="col-md-6 col-md-offset-4">
 <input type="submit" class="btn btn-primary" value="Confirm">
-<a href="{{ url('itemrequests') }}"><u>Back</u><a/>
+
 </a>
 </div>
 </form>
+<a style="color:black; float:right;" href="{{ url('itemrequests') }}"><u>Back</u><a/>
 </div>
 </div>
 </div>

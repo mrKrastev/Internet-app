@@ -35,8 +35,8 @@ src="{{ asset('storage/images/'.$url)}}"></td></tr>
 <table><tr>
 <td><a href="/items" class="btn btn-primary" role="button">Back to the
 list</a></td>
-<td><a href="{{action('ItemController@show', $item['id'])}}" class="btn
-btn- primary">Request item</a></td>
+<td><a href="{{action('ItemRequestController@create', $item['id'])}}" class="btn
+btn- warning">Request item</a></td>
 @if(Auth::user()->role =='1')
 <td><a href="{{action('ItemController@edit', $item['id'])}}" class="btn
 btn- warning">Edit</a></td>

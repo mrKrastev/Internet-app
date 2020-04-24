@@ -11,13 +11,13 @@
 <div class="col-md-12 ">
 <div class="card">
 <div class="card-header">Found items:
-  <select style=" float:right;  margin:5px;" id="category">
-<option value="Jewellery">Jewellery</option>
-<option value="Pets">Pets</option>
-<option value="Electronic devices">Electronic Devices</option>
-<option value=''>All</option>
+  <select style=" float:right;  margin:5px; color:white;" id="category">
+<option style="color:black;"value="Jewellery">Jewellery</option>
+<option style="color:black;"value="Pets">Pets</option>
+<option style="color:black;"value="Electronic devices">Electronic Devices</option>
+<option style="color:black;" value=''>All</option>
 </select>
-  <button onclick="myFunction()" style="  float:right; border-radius: 3px; border-width: thin;margin:5px;" id="refreshBtn" type="button" onclick="items" name="refresh">Refresh</button>
+  <button onclick="myFunction()" style="  float:right; border-radius: 3px;border-color:white; border-width: thin;margin:5px; color:white;" id="refreshBtn" type="button" onclick="items" name="refresh">Refresh</button>
 </div>
 <div class="card-body">
 <table id ="myTable"class="table table-striped">
@@ -46,7 +46,7 @@ btn- primary">Request item</a></td>
 <td><a href="{{action('ItemController@show', $item['id'])}}" class="btn
 btn- primary">Details</a></td>
 <td><a href="{{action('ItemRequestController@create', $item['id'])}}" class="btn
-btn- warning">Edit</a></td>
+btn- warning">Request item</a></td>
 <td>
 @if(Auth::user()->role =='1')
            <td><a href="{{action('ItemController@edit', $item['id'])}}" class="btn
