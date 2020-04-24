@@ -1,4 +1,11 @@
 @extends('layouts.app')
+<!-- Making sure that if the user isnt logged in, he doesnt see any of the content (he shouldnt be able to navigate here anyway) -->
+@guest
+<div class="card">
+  <img src="https://i.ytimg.com/vi/HyHT0tKSl5Y/maxresdefault.jpg" alt="">
+  <h1>NEVER SHOULD HAVE COME HERE!</h1>
+</div>
+@else
 @section('content')
 <div class="container">
 <div class="row justify-content-center">
@@ -20,6 +27,7 @@
 </div><br />
 @endif
 <div class="card-body">
+  <!-- embedding blade inside values everywhere to make it easier to keep the initial values the same if no change is needed there -->
 <form class="form-horizontal" method="POST" action="{{ action('ItemController@update',
 $item['id']) }} " enctype="multipart/form-data" >
 @method('PATCH')
@@ -72,3 +80,4 @@ $item['id']) }} " enctype="multipart/form-data" >
 </div>
 </div>
 @endsection
+@endguest

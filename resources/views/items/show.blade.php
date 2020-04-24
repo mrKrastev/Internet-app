@@ -14,6 +14,7 @@
 <div class="card-header">Item details:</div>
 <div class="card-body">
 <table class="table table-striped" border="1" >
+  <!-- generate table using blade -->
 <tr> <td> <b>Item ID :</th> <td> {{$item['id']}}</td></tr>
   <tr> <td><b>Item Name :</th> <td> {{$item['ItemName']}}</td></tr>
 <tr> <th><b>Item category: </th> <td>{{$item->Category}}</td></tr>
@@ -21,11 +22,8 @@
 <tr> <td><b>Date found:</th> <td>{{$item->Date}}</td></tr>
 <tr> <th><b>Description</th> <td style="max-width:150px;" >{{$item->Description}}</td></tr>
 <tr> <th><b>Found By:</th> <td style="max-width:150px;" >{{$item->FoundBy}}</td></tr>
-  <?php
-  $str=$item->Pictures;
-  $manyurls=explode(",",$str);
-    ?>
     <div style="display:flex; flex-wrap:wrap;">
+      <!-- for each image we got passed, we display a row with the image inside. -->
 @foreach($manyurls as $url)
 <tr> <td colspan='2' ><img style="max-width:80%;max-height:80%"
 src="{{ asset('storage/images/'.$url)}}"></td></tr>
@@ -37,6 +35,7 @@ src="{{ asset('storage/images/'.$url)}}"></td></tr>
 list</a></td>
 <td><a href="{{action('ItemRequestController@create', $item['id'])}}" class="btn
 btn- warning">Request item</a></td>
+<!-- adding extra things to do with the item if an admin is logged in-->
 @if(Auth::user()->role =='1')
 <td><a href="{{action('ItemController@edit', $item['id'])}}" class="btn
 btn- warning">Edit</a></td>

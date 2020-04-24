@@ -11,6 +11,7 @@
 <div class="col-md-12 ">
 <div class="card">
 <div class="card-header">Found items:
+  <!-- adding a drop down for sorting and a refresh button which updates the table -->
   <select style=" float:right;  margin:5px; color:white;" id="category">
 <option style="color:black;"value="Jewellery">Jewellery</option>
 <option style="color:black;"value="Pets">Pets</option>
@@ -31,6 +32,7 @@
 </tr>
 </thead>
 <tbody>
+  <!-- using blade to display all of the items in a table -->
 @foreach($items as $item)
 <tr>
 <td style ="word-break:break-word;">{{$item['ItemName']}}</td>
@@ -38,16 +40,19 @@
 <td style ="word-break:break-word;">{{$item['Colour']}}</td>
 <td style ="word-break:break-word;">{{$item['Date']}}</td>
 @guest
+<!-- as a guest, all that the "details"  and "request item" buttons do is alert them to log in-->
 <td><a onclick="window.alert('Please log in to use this feature.');" class="btn
 btn- primary">Details</a></td>
 <td><a onclick="window.alert('Please log in to use this feature.');" class="btn
 btn- primary">Request item</a></td>
 @else
+<!-- if logged in, then allow them to see the actual pages (pages are designed to work only with logged users anyway) -->
 <td><a href="{{action('ItemController@show', $item['id'])}}" class="btn
 btn- primary">Details</a></td>
 <td><a href="{{action('ItemRequestController@create', $item['id'])}}" class="btn
 btn- warning">Request item</a></td>
 <td>
+  <!-- here we check if the logged user is actually an admin, if so, we add the extra buttons such as edit and delete -->
 @if(Auth::user()->role =='1')
            <td><a href="{{action('ItemController@edit', $item['id'])}}" class="btn
            btn- warning">Edit</a></td>
@@ -66,8 +71,10 @@ btn- warning">Request item</a></td>
 </table>
 @guest
 @else
+<!-- this button is available only for logged users so we make sure its displayed only then -->
 <a style="float:right;" href="create" class="btn
 btn- primary"><button>Add item</button></a>
+<!-- if its an admin, we add see item requests button as well -->
 @if(Auth::user()->role =='1')
 <a style="float:right;" href="{{ url('itemrequests') }}" class="btn
 btn- primary"><button>See requests</button></a>
@@ -80,11 +87,13 @@ btn- primary"><button>See requests</button></a>
 </div>
 <script>
 function myFunction() {
+  //this is the script i used to sort the table
   var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("category");
+  input = document.getElementById("category"); //gets the filter value
   filter = input.value.toUpperCase();
   table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
+  tr = table.getElementsByTagName("tr"); //gets the rows
+  //loop and dont display the rows which arent of the given category
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[1];
     if (td) {

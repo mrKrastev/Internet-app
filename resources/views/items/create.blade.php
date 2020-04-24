@@ -1,6 +1,7 @@
 @extends('layouts.app')
 <!-- define the content section -->
 @section('content')
+<!-- Making sure that if the user isnt logged in, he doesnt see any of the content (he shouldnt be able to navigate here anyway) -->
 @guest
 <div class="card">
   <img src="https://i.ytimg.com/vi/HyHT0tKSl5Y/maxresdefault.jpg" alt="">
@@ -62,6 +63,7 @@ placeholder="eg on bus route 3, Birmingham" />
 </div>
 <div>
 <label >Found By:</label>
+<!-- readonly input as we just want to show them that their name is being recorded when adding the item -->
 <input type="text" name="FoundBy" value="{{Auth::user()->name}}" readonly="true"/>
 </div>
 <div class="col-md-8">

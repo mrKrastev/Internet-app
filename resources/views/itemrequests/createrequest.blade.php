@@ -25,6 +25,7 @@
 <p>{{ \Session::get('success') }}</p>
 </div><br /> @endif
  <!-- define the form -->
+ <!-- all input values are read only, as they are for display purposes,however, i had to use input to get the values for the controller later-->
 <div class="card-body">
 <form class="form-horizontal" method="POST"
 action="{{url('itemrequests') }}" enctype="multipart/form-data">

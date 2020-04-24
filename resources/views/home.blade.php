@@ -14,9 +14,11 @@
                         </div>
                     @endif
                     <img src="media/lost items img.jpg" alt="lost items?" width=400 height=400>
+                    <!-- link to the items screen-->
                     <a class="navbar-brand" href="{{ url('items') }}">
                       <h2 style="color:Black;"><strong><u>Check what we've found!</u></strong></h2>
                     </a>
+
                 </div>
 
             </div>

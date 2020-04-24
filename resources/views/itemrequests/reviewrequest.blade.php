@@ -1,4 +1,9 @@
 @extends('layouts.app')
+@guest
+
+@else
+  <!--dont allow anyone but the admin to see this page-->
+@if(Auth::user()->role =='1')
 @section('content')
 <div class="container">
 <div class="row justify-content-center">
@@ -37,6 +42,7 @@
 </textarea>
 </div>
 <div class="col-md-8">
+  <!--allow the admin to edit the status of the request-->
 <label >Select decision:</label>
 <select name="status" id="outcome">
 <option value="Pending">Pending</option>
@@ -57,3 +63,5 @@
 </div>
 </div>
 @endsection
+@endif
+@endguest

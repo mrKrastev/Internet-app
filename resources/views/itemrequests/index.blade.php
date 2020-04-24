@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('content')
+@guest
 
+@else
+  <!--dont allow anyone but the admin to see this page-->
+@if(Auth::user()->role =='1')
 @if (\Session::has('success'))
 <div class="alert alert-success">
 <p>{{ \Session::get('success') }}</p>
@@ -26,6 +30,7 @@
 </thead>
 <tbody>
 @foreach($itemrequests as $request)
+<!-- showing all requests -->
 <tr>
 <td style ="word-break:break-word;">{{$request['id']}}</td>
 <td style ="word-break:break-word;">{{$request['userid']}}</td>
@@ -33,10 +38,8 @@
 <td style ="word-break:break-word;">{{$request['created_at']}}</td>
 <td style ="word-break:break-word;">{{$request['updated_at']}}</td>
 <td style ="word-break:break-word;">{{$request['Status']}}</td>
-@guest
 
-@else
-@if(Auth::user()->role =='1')
+
             <td><a href="{{action('ItemRequestController@edit', $request['id'])}}" class="btn
             btn- primary">Review</a></td>
            <td><form action="{{action('ItemRequestController@destroy', $request['id'])}}"
@@ -46,8 +49,6 @@
 </form>
 </td>
 </tr>
-@endif
-@endguest
 @endforeach
 </tbody>
 </table>
@@ -57,3 +58,5 @@
 </div>
 </div>
 @endsection
+@endif
+@endguest
