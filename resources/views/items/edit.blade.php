@@ -6,6 +6,7 @@
   <h1>NEVER SHOULD HAVE COME HERE!</h1>
 </div>
 @else
+@if(Auth::user()->role =='1')
 @section('content')
 <div class="container">
 <div class="row justify-content-center">
@@ -80,4 +81,5 @@ $item['id']) }} " enctype="multipart/form-data" >
 </div>
 </div>
 @endsection
+@endif
 @endguest
