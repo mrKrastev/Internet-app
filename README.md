@@ -1,6 +1,6 @@
 ## About FiLo
 
-<a href="https://180059900.cs2410-web01pvm.aston.ac.uk/">Click here to go to the website</a>
+<a href="http://180059900.cs2410-web01pvm.aston.ac.uk/">Click here to go to the website</a>
 
 ## Things to check out when exploring LostAndFound
 
